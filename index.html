@@ -10,13 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Menggunakan font Inter sebagai default */
+        /* (Style CSS tidak berubah, sama seperti sebelumnya) */
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* Custom scrollbar */
         #cart-items-container::-webkit-scrollbar,
         #daftar-kategori-admin::-webkit-scrollbar,
         #daftar-produk-admin::-webkit-scrollbar,
@@ -27,23 +26,21 @@
         #daftar-kategori-admin::-webkit-scrollbar-track,
         #daftar-produk-admin::-webkit-scrollbar-track,
         .page-content::-webkit-scrollbar-track {
-            background: #1e293b; /* slate-800 */
+            background: #1e293b;
         }
         #cart-items-container::-webkit-scrollbar-thumb,
         #daftar-kategori-admin::-webkit-scrollbar-thumb,
         #daftar-produk-admin::-webkit-scrollbar-thumb,
         .page-content::-webkit-scrollbar-thumb {
-            background: #475569; /* slate-600 */
+            background: #475569;
             border-radius: 3px;
         }
         #cart-items-container::-webkit-scrollbar-thumb:hover,
         #daftar-kategori-admin::-webkit-scrollbar-thumb:hover,
         #daftar-produk-admin::-webkit-scrollbar-thumb:hover,
         .page-content::-webkit-scrollbar-thumb:hover {
-            background: #64748b; /* slate-500 */
+            background: #64748b;
         }
-        
-        /* Menyembunyikan halaman yang tidak aktif */
         .page-content.hidden {
             display: none;
         }
@@ -83,7 +80,16 @@
                         </span>
                     </button>
                 </li>
-            </ul>
+                
+                <li>
+                    <button id="nav-pengaturan" data-page="halaman-pengaturan" class="nav-btn text-slate-400 hover:bg-slate-700 hover:text-white p-3 rounded-lg group relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a8.03 8.03 0 0 0-1.4-1.4l.96-2.39a.5.5 0 0 0-.22-.61l-3.32-1.92a.5.5 0 0 0-.61.12l-1.58 2.03c-.3-.04-.61-.06-.94-.06s-.64.02-.94.07L7.06 2.5a.49.49 0 0 0-.61-.12L4.13 4.3a.5.5 0 0 0-.22.61l.96 2.39a8.03 8.03 0 0 0-1.4 1.4L1.08 7.77a.5.5 0 0 0-.61.22L.15 11.31a.49.49 0 0 0 .12.61l2.03 1.58c.04.3.06.61.06.94 0 .32-.02.64-.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32a.5.5 0 0 0 .61.22l2.39-.96a8.03 8.03 0 0 0 1.4 1.4l-.96 2.39a.5.5 0 0 0 .22.61l3.32 1.92a.5.5 0 0 0 .61-.12l1.58-2.03c.3.04.61.06.94.06s.64-.02.94-.07l1.58 2.03a.49.49 0 0 0 .61.12l3.32-1.92a.5.5 0 0 0 .22-.61l-.96-2.39a8.03 8.03 0 0 0 1.4-1.4l2.39.96a.5.5 0 0 0 .61-.22l1.92-3.32a.5.5 0 0 0-.12-.61l-2.03-1.58zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                        <span class="absolute left-full ml-3 px-2 py-1 bg-slate-700 text-white text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                          Pengaturan
+                        </span>
+                    </button>
+                </li>
+                </ul>
         </nav>
 
         <div class="flex-1 h-screen overflow-hidden">
@@ -125,6 +131,7 @@
                         <label for="customer-name" class="block text-sm font-medium text-slate-300 mb-1">Nama Pelanggan (Opsional)</label>
                         <input type="text" id="customer-name" placeholder="Cth: Meja 5 / Budi" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                     </div>
+
                     <div id="cart-items-container" class="flex-1 overflow-y-auto p-6">
                         <div id="cart-empty-message" class="flex flex-col items-center justify-center h-full text-slate-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -175,57 +182,8 @@
             </div>
 
             <div id="halaman-produk" class="page-content hidden h-full overflow-y-auto p-8">
-                <h1 class="text-3xl font-bold text-white mb-6">Produk & Pengaturan</h1>
+                <h1 class="text-3xl font-bold text-white mb-6">Manajemen Produk</h1>
                 
-                <div class="bg-slate-800 p-6 rounded-lg shadow-lg mb-6">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Pengaturan Toko</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <form id="form-setting-nama" class="space-y-3">
-                            <div>
-                                <label for="setting-nama-toko" class="block text-sm font-medium text-slate-300 mb-1">Nama Toko</label>
-                                <input type="text" id="setting-nama-toko" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                            </div>
-                            <button id="btn-simpan-nama-toko" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
-                                Simpan Nama
-                            </button>
-                        </form>
-                        <form id="form-setting-logo" class="space-y-3">
-                             <div>
-                                <label for="setting-logo-file" class="block text-sm font-medium text-slate-300 mb-1">Upload Logo Baru</label>
-                                <input type="file" id="setting-logo-file" accept="image/*" class="w-full text-sm text-slate-400
-                                    file:mr-4 file:py-2 file:px-4
-                                    file:rounded-full file:border-0
-                                    file:text-sm file:font-semibold
-                                    file:bg-cyan-600 file:text-white
-                                    hover:file:bg-cyan-500">
-                            </div>
-                            <button id="btn-simpan-logo" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
-                                Simpan Logo
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 p-6 rounded-lg shadow-lg mb-6">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Manajemen Kategori</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <form id="form-tambah-kategori" class="space-y-3">
-                            <div>
-                                <label for="kategori-baru-nama" class="block text-sm font-medium text-slate-300 mb-1">Nama Kategori Baru</label>
-                                <input type="text" id="kategori-baru-nama" placeholder="Cth: elektronik" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                            </div>
-                            <button id="btn-tambah-kategori" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
-                                Tambah Kategori
-                            </button>
-                        </form>
-                        <div>
-                             <label class="block text-sm font-medium text-slate-300 mb-2">Kategori Saat Ini</label>
-                             <div id="daftar-kategori-admin" class="space-y-2 max-h-32 overflow-y-auto">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-1 bg-slate-800 p-6 rounded-lg shadow-lg">
                         <h2 class="text-2xl font-semibold text-white mb-4">Tambah Produk Baru</h2>
@@ -280,7 +238,59 @@
                     </div>
             </div>
 
-        </div>
+            <div id="halaman-pengaturan" class="page-content hidden h-full overflow-y-auto p-8">
+                <h1 class="text-3xl font-bold text-white mb-6">Pengaturan Toko & Kategori</h1>
+                
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg mb-6">
+                    <h2 class="text-2xl font-semibold text-white mb-4">Pengaturan Toko</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form id="form-setting-nama" class="space-y-3">
+                            <div>
+                                <label for="setting-nama-toko" class="block text-sm font-medium text-slate-300 mb-1">Nama Toko</label>
+                                <input type="text" id="setting-nama-toko" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            </div>
+                            <button id="btn-simpan-nama-toko" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
+                                Simpan Nama
+                            </button>
+                        </form>
+                        <form id="form-setting-logo" class="space-y-3">
+                             <div>
+                                <label for="setting-logo-file" class="block text-sm font-medium text-slate-300 mb-1">Upload Logo Baru</label>
+                                <input type="file" id="setting-logo-file" accept="image/*" class="w-full text-sm text-slate-400
+                                    file:mr-4 file:py-2 file:px-4
+                                    file:rounded-full file:border-0
+                                    file:text-sm file:font-semibold
+                                    file:bg-cyan-600 file:text-white
+                                    hover:file:bg-cyan-500">
+                            </div>
+                            <button id="btn-simpan-logo" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
+                                Simpan Logo
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg mb-6">
+                    <h2 class="text-2xl font-semibold text-white mb-4">Manajemen Kategori</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form id="form-tambah-kategori" class="space-y-3">
+                            <div>
+                                <label for="kategori-baru-nama" class="block text-sm font-medium text-slate-300 mb-1">Nama Kategori Baru</label>
+                                <input type="text" id="kategori-baru-nama" placeholder="Cth: elektronik" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            </div>
+                            <button id="btn-tambah-kategori" type="submit" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-500 transition duration-200">
+                                Tambah Kategori
+                            </button>
+                        </form>
+                        <div>
+                             <label class="block text-sm font-medium text-slate-300 mb-2">Kategori Saat Ini</label>
+                             <div id="daftar-kategori-admin" class="space-y-2 max-h-32 overflow-y-auto">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
     </div> <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity">
         <div class="bg-slate-800 p-8 rounded-xl shadow-2xl text-center max-w-sm w-full transform scale-95 transition-transform">
             <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -327,6 +337,7 @@
             </form>
         </div>
     </div>
+
     <div id="notifikasi" class="fixed top-5 right-5 bg-red-600 text-white px-5 py-3 rounded-lg shadow-lg hidden transition-all duration-300 z-[100]">
         </div>
 
@@ -334,7 +345,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // === DATABASE PRODUK (DENGAN STOK) ===
+            // === DATABASE PRODUK ===
             let allProducts = [
                 { id: 1, nama: "Nasi Goreng Spesial", kategori: "makanan", harga: 25000, stok: 50, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Nasi+Goreng" },
                 { id: 2, nama: "Ayam Bakar Madu", kategori: "makanan", harga: 35000, stok: 30, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Ayam+Bakar" },
@@ -347,7 +358,7 @@
                 { id: 9, nama: "Pisang Goreng Keju", kategori: "snack", harga: 15000, stok: 30, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Pisang+Goreng" },
                 { id: 10, nama: "Air Mineral", kategori: "minuman", harga: 4000, stok: 200, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Air+Mineral" },
                 { id: 11, nama: "Bakmi Jawa", kategori: "makanan", harga: 22000, stok: 35, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Bakmi+Jawa" },
-                { id: 12, nama: "Singkong Keju", kategori: "snack", harga: 10000, stok: 0, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Singkong" }, // Contoh stok habis
+                { id: 12, nama: "Singkong Keju", kategori: "snack", harga: 10000, stok: 0, gambar: "https://placehold.co/150x150/1e293b/94a3b8?text=Singkong" },
             ];
 
             // === STATE APLIKASI ===
@@ -355,11 +366,10 @@
             let riwayatPenjualan = [];
             let filterKategori = 'semua';
             let searchTerm = '';
-            // --- STATE BARU ---
             let namaToko = "Toko Sejahtera";
-            let logoUrl = null; // Awalnya null, akan diisi dengan URL.createObjectURL
+            let logoUrl = null; 
             let categories = ['semua', 'makanan', 'minuman', 'snack'];
-            let lastTransaction = null; // Menyimpan data transaksi terakhir untuk cetak resi
+            let lastTransaction = null; 
 
             // === ELEMEN DOM (KASIR) ===
             const productGrid = document.getElementById('product-grid');
@@ -379,28 +389,28 @@
             const modalTotal = document.getElementById('modal-total');
             const modalKembalian = document.getElementById('modal-kembalian');
             const notifikasiEl = document.getElementById('notifikasi');
-            // --- DOM BARU (KASIR & MODAL) ---
             const namaTokoDisplay = document.getElementById('nama-toko-display');
             const logoContainer = document.getElementById('logo-container');
             const btnCetakResi = document.getElementById('btn-cetak-resi');
-            const customerNameInput = document.getElementById('customer-name'); // Input Nama Pelanggan
+            const customerNameInput = document.getElementById('customer-name'); 
 
             // === ELEMEN DOM (NAVIGASI & HALAMAN) ===
+            // QuerySelectorAll otomatis mengambil semua tombol, termasuk yang baru
             const navButtons = document.querySelectorAll('.nav-btn');
             const pages = document.querySelectorAll('.page-content');
             
-            // === ELEMEN DOM (HALAMAN PRODUK & PENGATURAN) ===
+            // === ELEMEN DOM (HALAMAN PRODUK) ===
             const formTambahProduk = document.getElementById('form-tambah-produk');
             const daftarProdukAdminContainer = document.getElementById('daftar-produk-admin');
             const prodKategoriSelect = document.getElementById('prod-kategori');
-            // --- DOM (PENGATURAN) ---
+
+            // === ELEMEN DOM (HALAMAN PENGATURAN) ===
             const formSettingNama = document.getElementById('form-setting-nama');
             const settingNamaTokoInput = document.getElementById('setting-nama-toko');
             const btnSimpanNamaToko = document.getElementById('btn-simpan-nama-toko');
             const formSettingLogo = document.getElementById('form-setting-logo');
             const settingLogoFileInput = document.getElementById('setting-logo-file');
             const btnSimpanLogo = document.getElementById('btn-simpan-logo');
-            // --- DOM (KATEGORI) ---
             const formTambahKategori = document.getElementById('form-tambah-kategori');
             const kategoriBaruNamaInput = document.getElementById('kategori-baru-nama');
             const btnTambahKategori = document.getElementById('btn-tambah-kategori');
@@ -410,7 +420,7 @@
             const riwayatContainer = document.getElementById('riwayat-container');
             const riwayatEmptyMessage = document.getElementById('riwayat-empty-message');
 
-            // === ELEMEN DOM (SETUP MODAL BARU) ===
+            // === ELEMEN DOM (SETUP MODAL) ===
             const setupModal = document.getElementById('setup-modal');
             const setupForm = document.getElementById('setup-form');
             const setupNamaTokoInput = document.getElementById('setup-nama-toko');
@@ -425,13 +435,11 @@
                 clearTimeout(notifikasiTimeout); 
                 notifikasiEl.textContent = pesan;
                 notifikasiEl.classList.remove('hidden', 'bg-red-600', 'bg-green-600');
-                
                 if (tipe === 'error') {
                     notifikasiEl.classList.add('bg-red-600');
                 } else if (tipe === 'sukses') {
                     notifikasiEl.classList.add('bg-green-600');
                 }
-
                 notifikasiTimeout = setTimeout(() => {
                     notifikasiEl.classList.add('hidden');
                 }, 3000);
@@ -446,13 +454,13 @@
                 }).format(angka);
             };
             
-            // Render Nama Toko (Dipanggil dari 2 tempat: setup & pengaturan)
+            // Render Nama Toko
             const renderNamaToko = () => {
                 namaTokoDisplay.textContent = namaToko;
-                settingNamaTokoInput.value = namaToko; // Update juga di halaman pengaturan
+                settingNamaTokoInput.value = namaToko; 
             };
 
-            // Render Logo (Dipanggil dari 2 tempat: setup & pengaturan)
+            // Render Logo
             const renderLogo = () => {
                 if (logoUrl) {
                     logoContainer.innerHTML = `<img src="${logoUrl}" alt="Logo Toko" class="w-full h-full rounded-lg object-cover">`;
@@ -472,7 +480,6 @@
                     button.dataset.kategori = kategori;
                     button.textContent = kategori.charAt(0).toUpperCase() + kategori.slice(1); 
                     button.className = 'kategori-btn px-4 py-2 rounded-full font-semibold transition-colors';
-                    
                     if (kategori === filterKategori) {
                         button.classList.add('bg-cyan-600', 'text-white');
                     } else {
@@ -488,7 +495,6 @@
                 prodKategoriSelect.innerHTML = ''; 
                 categories.forEach(kategori => {
                     if (kategori === 'semua') return; 
-                    
                     const option = document.createElement('option');
                     option.value = kategori;
                     option.textContent = kategori.charAt(0).toUpperCase() + kategori.slice(1);
@@ -500,12 +506,10 @@
             const renderDaftarKategoriAdmin = () => {
                 daftarKategoriAdmin.innerHTML = ''; 
                 const adminCategories = categories.filter(k => k !== 'semua');
-                
                 if (adminCategories.length === 0) {
                     daftarKategoriAdmin.innerHTML = `<p class="text-slate-500 text-sm">Belum ada kategori kustom.</p>`;
                     return;
                 }
-                
                 adminCategories.forEach(kategori => {
                     const item = document.createElement('div');
                     item.className = 'flex items-center justify-between bg-slate-700 px-3 py-2 rounded-lg';
@@ -519,7 +523,7 @@
                 });
             };
 
-            // Pindah Halaman
+            // Pindah Halaman (DIMODIFIKASI)
             const pindahHalaman = (targetPageId) => {
                 pages.forEach(page => page.classList.add('hidden'));
                 const targetPage = document.getElementById(targetPageId);
@@ -537,14 +541,20 @@
                     }
                 });
                 
-                if (targetPageId === 'halaman-produk') {
+                // === LOGIKA RENDER DIPERBARUI ===
+                if (targetPageId === 'halaman-kasir') {
+                    // Update filter kategori jika ada perubahan
+                    renderKategoriFilters();
+                } else if (targetPageId === 'halaman-produk') {
+                    // Hanya render yang dibutuhkan halaman produk
                     renderDaftarProdukAdmin();
-                    renderDaftarKategoriAdmin();
-                    renderKategoriOptions();
+                    renderKategoriOptions(); // Untuk <select> di form
                 } else if (targetPageId === 'halaman-riwayat') {
                     renderRiwayat();
-                } else if (targetPageId === 'halaman-kasir') {
-                    renderKategoriFilters();
+                } else if (targetPageId === 'halaman-pengaturan') {
+                    // Hanya render yang dibutuhkan halaman pengaturan
+                    renderDaftarKategoriAdmin(); // Untuk daftar kategori admin
+                    renderNamaToko(); // Untuk memastikan input nama toko update
                 }
             };
 
@@ -592,15 +602,12 @@
                     showNotifikasi("Stok produk ini sudah habis.");
                     return;
                 }
-                
                 const itemDiKeranjang = keranjang.find(item => item.id === id);
                 const jumlahDiKeranjang = itemDiKeranjang ? itemDiKeranjang.jumlah : 0;
-                
                 if (jumlahDiKeranjang >= produk.stok) {
                     showNotifikasi("Stok di keranjang sudah maksimal (total stok: " + produk.stok + ").");
                     return;
                 }
-
                 if (itemDiKeranjang) {
                     itemDiKeranjang.jumlah++;
                 } else {
@@ -613,15 +620,12 @@
             const ubahJumlahItem = (id, delta) => {
                 const itemDiKeranjang = keranjang.find(item => item.id === id);
                 if (!itemDiKeranjang) return;
-
                 const produk = allProducts.find(p => p.id === id);
                 const jumlahBaru = itemDiKeranjang.jumlah + delta;
-
                 if (delta > 0 && jumlahBaru > produk.stok) {
                     showNotifikasi("Stok tidak mencukupi (total stok: " + produk.stok + ").");
                     return;
                 }
-
                 itemDiKeranjang.jumlah = jumlahBaru;
                 if (itemDiKeranjang.jumlah <= 0) {
                     keranjang = keranjang.filter(item => item.id !== id);
@@ -665,7 +669,7 @@
             // Update Total (Subtotal, Pajak, Total)
             const updateTotal = () => {
                 const subtotal = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0);
-                const pajak = subtotal * 0.10; // Pajak 10%
+                const pajak = subtotal * 0.10; 
                 const total = subtotal + pajak;
                 subtotalEl.textContent = formatRupiah(subtotal);
                 pajakEl.textContent = formatRupiah(pajak);
@@ -685,7 +689,6 @@
             const hitungKembalian = () => {
                 const total = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0) * 1.10;
                 let jumlahBayar = parseFloat(jumlahBayarInput.value.replace(/[^0-9]/g, ''));
-                
                 if (isNaN(jumlahBayar) || jumlahBayar < total) {
                     kembalianEl.textContent = "Rp 0";
                     kembalianEl.classList.remove('text-cyan-400');
@@ -703,18 +706,15 @@
                 }
             };
             
-            // Proses Pembayaran (MODIFIKASI: Menambah Nama Pelanggan)
+            // Proses Pembayaran
             const prosesBayar = () => {
                 const subtotal = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0);
                 const pajak = subtotal * 0.10;
                 const total = subtotal + pajak;
                 let jumlahBayar = parseFloat(jumlahBayarInput.value.replace(/[^0-9]/g, ''));
                 const kembalian = jumlahBayar - total;
-                
-                // --- BARU: Ambil nama pelanggan ---
                 const namaPelanggan = customerNameInput.value.trim();
 
-                // 1. Kurangi Stok
                 keranjang.forEach(itemKeranjang => {
                     const produkDiDb = allProducts.find(p => p.id === itemKeranjang.id);
                     if (produkDiDb) {
@@ -722,11 +722,10 @@
                     }
                 });
                 
-                // 2. Tambah ke Riwayat Penjualan
                 const transaksi = {
                     id: `TRX-${new Date().getTime()}`,
                     tanggal: new Date(),
-                    pelanggan: namaPelanggan || 'Walk-in', // Default 'Walk-in' jika kosong
+                    pelanggan: namaPelanggan || 'Walk-in', 
                     items: JSON.parse(JSON.stringify(keranjang)), 
                     subtotal: subtotal,
                     pajak: pajak,
@@ -737,18 +736,17 @@
                 riwayatPenjualan.push(transaksi);
                 lastTransaction = transaksi;
 
-                // 3. Tampilkan modal sukses
                 modalTotal.textContent = formatRupiah(total);
                 modalKembalian.textContent = formatRupiah(kembalian);
                 successModal.classList.remove('hidden');
                 successModal.querySelector('div').classList.add('scale-100');
             };
             
-            // Transaksi Baru (MODIFIKASI: Reset Nama Pelanggan)
+            // Transaksi Baru
             const mulaiBaru = () => {
                 keranjang = [];
                 jumlahBayarInput.value = '';
-                customerNameInput.value = ''; // Reset nama pelanggan
+                customerNameInput.value = ''; 
                 renderKeranjang();
                 kembalianEl.textContent = "Rp 0";
                 kembalianEl.classList.add('text-cyan-400');
@@ -764,7 +762,7 @@
                 renderProduk(); 
             };
             
-            // Cetak Resi (MODIFIKASI: Menambah Nama Pelanggan)
+            // Cetak Resi
             const handleCetakResi = () => {
                 if (!lastTransaction) {
                     showNotifikasi("Data transaksi tidak ditemukan.");
@@ -789,10 +787,7 @@
                         td { padding: 2px 0; }
                         .total-row td { border-top: 1px dashed #000; padding-top: 4px; font-weight: bold; }
                         .text-right { text-align: right; }
-                        @media print {
-                            @page { margin: 0; }
-                            body { margin: 10px; }
-                        }
+                        @media print { @page { margin: 0; } body { margin: 10px; } }
                     </style>
                     <h3>${namaToko}</h3>
                     <p style="text-align: center;">Struk Pembayaran</p>
@@ -809,30 +804,13 @@
                                 <th style="width: 30%; text-align: right;">Subtotal</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            ${itemsHtml}
-                        </tbody>
+                        <tbody> ${itemsHtml} </tbody>
                         <tfoot>
-                            <tr class="total-row">
-                                <td colspan="2">Subtotal</td>
-                                <td class="text-right">${formatRupiah(trx.subtotal)}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Pajak (10%)</td>
-                                <td class="text-right">${formatRupiah(trx.pajak)}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="font-weight: bold;">TOTAL</td>
-                                <td class="text-right" style="font-weight: bold;">${formatRupiah(trx.total)}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Bayar</td>
-                                <td class="text-right">${formatRupiah(trx.bayar)}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Kembalian</td>
-                                <td class="text-right">${formatRupiah(trx.kembalian)}</td>
-                            </tr>
+                            <tr class="total-row"><td colspan="2">Subtotal</td><td class="text-right">${formatRupiah(trx.subtotal)}</td></tr>
+                            <tr><td colspan="2">Pajak (10%)</td><td class="text-right">${formatRupiah(trx.pajak)}</td></tr>
+                            <tr><td colspan="2" style="font-weight: bold;">TOTAL</td><td class="text-right" style="font-weight: bold;">${formatRupiah(trx.total)}</td></tr>
+                            <tr><td colspan="2">Bayar</td><td class="text-right">${formatRupiah(trx.bayar)}</td></tr>
+                            <tr><td colspan="2">Kembalian</td><td class="text-right">${formatRupiah(trx.kembalian)}</td></tr>
                         </tfoot>
                     </table>
                     <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
@@ -887,7 +865,7 @@
                 const stok = parseInt(document.getElementById('prod-stok').value);
                 
                 if (!kategori) {
-                    showNotifikasi("Kategori tidak valid. Tambahkan kategori terlebih dahulu.", "error");
+                    showNotifikasi("Kategori tidak valid. Tambahkan kategori di Pengaturan.", "error");
                     return;
                 }
                 
@@ -929,25 +907,22 @@
                 showNotifikasi("Produk berhasil dihapus.", "sukses");
             };
             
-            // Render Riwayat Penjualan (MODIFIKASI: Menampilkan Nama Pelanggan)
+            // Render Riwayat Penjualan
             const renderRiwayat = () => {
                 riwayatContainer.innerHTML = ''; 
                 if (riwayatPenjualan.length === 0) {
                     riwayatContainer.appendChild(riwayatEmptyMessage);
                     return;
                 }
-
                 riwayatPenjualan.slice().reverse().forEach(trx => {
                     const trxCard = document.createElement('div');
                     trxCard.className = 'bg-slate-800 p-5 rounded-lg shadow-lg';
-                    
                     const itemsHtml = trx.items.map(item => `
                         <li class="flex justify-between text-sm text-slate-300">
                             <span>${item.nama} <span class="text-slate-400">x ${item.jumlah}</span></span>
                             <span>${formatRupiah(item.harga * item.jumlah)}</span>
                         </li>
                     `).join('');
-                    
                     trxCard.innerHTML = `
                         <div class="flex justify-between items-start mb-3">
                             <div>
@@ -974,6 +949,7 @@
             // === EVENT LISTENERS ===
 
             // Navigasi Halaman
+            // (Listener ini sudah otomatis mencakup tombol baru)
             navButtons.forEach(btn => {
                 btn.addEventListener('click', () => pindahHalaman(btn.dataset.page));
             });
@@ -1023,6 +999,7 @@
             });
             
             // --- EVENT LISTENER (PENGATURAN) ---
+            // Listener ini akan berfungsi karena elemennya ada di 'halaman-pengaturan'
             
             // Simpan Nama Toko
             formSettingNama.addEventListener('submit', (e) => {
@@ -1065,9 +1042,9 @@
                     return;
                 }
                 categories.push(namaKat);
-                renderKategoriFilters();
-                renderKategoriOptions();
+                // Perbarui daftar di halaman pengaturan SAJA
                 renderDaftarKategoriAdmin();
+                // (filter di kasir & opsi di produk akan auto-update saat halaman itu dikunjungi)
                 showNotifikasi(`Kategori '${namaKat}' berhasil ditambahkan!`, "sukses");
                 kategoriBaruNamaInput.value = '';
             });
@@ -1083,24 +1060,22 @@
                         return;
                     }
                     categories = categories.filter(c => c !== kategoriNama);
-                    renderKategoriFilters();
-                    renderKategoriOptions();
+                    // Perbarui daftar di halaman pengaturan
                     renderDaftarKategoriAdmin();
-                    renderProduk(); 
                     showNotifikasi(`Kategori '${kategoriNama}' berhasil dihapus.`, "sukses");
                 }
             });
 
-            // --- BARU: Event Listener Setup Modal ---
+            // --- Event Listener Setup Modal ---
             setupForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
                 // 1. Set Nama Toko
                 namaToko = setupNamaTokoInput.value.trim();
                 if (namaToko === "") {
-                    namaToko = "Toko Sejahtera"; // Default
+                    namaToko = "Toko Sejahtera";
                 }
-                renderNamaToko(); // Update display
+                renderNamaToko(); 
                 
                 // 2. Set Logo (jika ada)
                 const file = setupLogoFileInput.files[0];
@@ -1109,29 +1084,27 @@
                         URL.revokeObjectURL(logoUrl);
                     }
                     logoUrl = URL.createObjectURL(file);
-                    renderLogo(); // Update display
+                    renderLogo();
                 }
                 
                 // 3. Sembunyikan Modal
                 setupModal.classList.add('hidden');
                 
-                // 4. Inisialisasi sisa aplikasi (karena renderKategoriOptions 
-                //    bergantung pada renderNamaToko dll)
-                //    Kita panggil lagi render yang penting di sini
+                // 4. Inisialisasi sisa aplikasi
+                // Panggil SEMUA fungsi render yang dibutuhkan
+                // untuk mengisi data di semua halaman (meskipun tersembunyi)
                 renderKategoriFilters();
                 renderKategoriOptions();
                 renderProduk();
                 renderDaftarProdukAdmin(); 
+                renderDaftarKategoriAdmin(); 
             });
 
 
             // === INISIALISASI ===
-            // HANYA panggil renderKeranjang() di awal.
-            // Render sisanya akan dipanggil SETELAH setup modal ditutup.
+            // Hanya panggil renderKeranjang() di awal.
+            // Sisanya dipanggil setelah setup modal ditutup.
             renderKeranjang();
-            
-            // Catatan: renderNamaToko(), renderLogo(), renderProduk(), dll
-            // sekarang dipanggil dari dalam event listener 'setupForm'
         });
     </script>
 
