@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         /* Menggunakan font Inter sebagai default */
         body {
@@ -17,27 +18,27 @@
         }
         /* Custom scrollbar */
         #cart-items-container::-webkit-scrollbar,
-        #daftar-kategori-admin::-webkit-scrollbar, /* Scrollbar baru */
-        #daftar-produk-admin::-webkit-scrollbar, /* Scrollbar lama */
+        #daftar-kategori-admin::-webkit-scrollbar,
+        #daftar-produk-admin::-webkit-scrollbar,
         .page-content::-webkit-scrollbar {
             width: 6px;
         }
         #cart-items-container::-webkit-scrollbar-track,
-        #daftar-kategori-admin::-webkit-scrollbar-track, /* Track baru */
-        #daftar-produk-admin::-webkit-scrollbar-track, /* Track lama */
+        #daftar-kategori-admin::-webkit-scrollbar-track,
+        #daftar-produk-admin::-webkit-scrollbar-track,
         .page-content::-webkit-scrollbar-track {
             background: #1e293b; /* slate-800 */
         }
         #cart-items-container::-webkit-scrollbar-thumb,
-        #daftar-kategori-admin::-webkit-scrollbar-thumb, /* Thumb baru */
-        #daftar-produk-admin::-webkit-scrollbar-thumb, /* Thumb lama */
+        #daftar-kategori-admin::-webkit-scrollbar-thumb,
+        #daftar-produk-admin::-webkit-scrollbar-thumb,
         .page-content::-webkit-scrollbar-thumb {
             background: #475569; /* slate-600 */
             border-radius: 3px;
         }
         #cart-items-container::-webkit-scrollbar-thumb:hover,
-        #daftar-kategori-admin::-webkit-scrollbar-thumb:hover, /* Hover baru */
-        #daftar-produk-admin::-webkit-scrollbar-thumb:hover, /* Hover lama */
+        #daftar-kategori-admin::-webkit-scrollbar-thumb:hover,
+        #daftar-produk-admin::-webkit-scrollbar-thumb:hover,
         .page-content::-webkit-scrollbar-thumb:hover {
             background: #64748b; /* slate-500 */
         }
@@ -50,7 +51,7 @@
 </head>
 <body class="bg-slate-900 text-slate-200">
 
-    <div class="flex h-screen overflow-hidden">
+    <div id="main-app" class="flex h-screen overflow-hidden">
     
         <nav class="w-20 bg-slate-800 flex flex-col items-center py-4 space-y-4 shadow-lg z-10">
             <div id="logo-container" class="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center">
@@ -120,6 +121,10 @@
                         <h2 class="text-2xl font-bold text-white">Pesanan Saat Ini</h2>
                     </header>
 
+                    <div class="p-6 pb-0">
+                        <label for="customer-name" class="block text-sm font-medium text-slate-300 mb-1">Nama Pelanggan (Opsional)</label>
+                        <input type="text" id="customer-name" placeholder="Cth: Meja 5 / Budi" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
                     <div id="cart-items-container" class="flex-1 overflow-y-auto p-6">
                         <div id="cart-empty-message" class="flex flex-col items-center justify-center h-full text-slate-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -276,9 +281,7 @@
             </div>
 
         </div>
-    </div>
-
-    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity">
+    </div> <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden transition-opacity">
         <div class="bg-slate-800 p-8 rounded-xl shadow-2xl text-center max-w-sm w-full transform scale-95 transition-transform">
             <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -300,6 +303,30 @@
         </div>
     </div>
     
+    <div id="setup-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] transition-opacity">
+        <div class="bg-slate-800 p-8 rounded-xl shadow-2xl max-w-md w-full transform transition-transform">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Selamat Datang!</h2>
+            <p class="text-slate-300 mb-6 text-center">Silakan atur nama toko dan logo Anda untuk memulai.</p>
+            <form id="setup-form" class="space-y-4">
+                <div>
+                    <label for="setup-nama-toko" class="block text-sm font-medium text-slate-300 mb-1">Nama Toko</label>
+                    <input type="text" id="setup-nama-toko" class="w-full bg-slate-700 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" value="Toko Sejahtera" required>
+                </div>
+                <div>
+                    <label for="setup-logo-file" class="block text-sm font-medium text-slate-300 mb-1">Upload Logo (Opsional)</label>
+                    <input type="file" id="setup-logo-file" accept="image/*" class="w-full text-sm text-slate-400
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-cyan-600 file:text-white
+                        hover:file:bg-cyan-500">
+                </div>
+                <button type="submit" class="w-full bg-cyan-600 text-white font-bold py-3 rounded-lg hover:bg-cyan-500 transition duration-200 text-lg">
+                    Mulai Gunakan Kasir
+                </button>
+            </form>
+        </div>
+    </div>
     <div id="notifikasi" class="fixed top-5 right-5 bg-red-600 text-white px-5 py-3 rounded-lg shadow-lg hidden transition-all duration-300 z-[100]">
         </div>
 
@@ -356,33 +383,38 @@
             const namaTokoDisplay = document.getElementById('nama-toko-display');
             const logoContainer = document.getElementById('logo-container');
             const btnCetakResi = document.getElementById('btn-cetak-resi');
+            const customerNameInput = document.getElementById('customer-name'); // Input Nama Pelanggan
 
             // === ELEMEN DOM (NAVIGASI & HALAMAN) ===
             const navButtons = document.querySelectorAll('.nav-btn');
             const pages = document.querySelectorAll('.page-content');
-            // ... (Tidak perlu mendaftarkan ID halaman, sudah ada di 'pages')
-
+            
             // === ELEMEN DOM (HALAMAN PRODUK & PENGATURAN) ===
             const formTambahProduk = document.getElementById('form-tambah-produk');
             const daftarProdukAdminContainer = document.getElementById('daftar-produk-admin');
             const prodKategoriSelect = document.getElementById('prod-kategori');
-            // --- DOM BARU (PENGATURAN) ---
+            // --- DOM (PENGATURAN) ---
             const formSettingNama = document.getElementById('form-setting-nama');
             const settingNamaTokoInput = document.getElementById('setting-nama-toko');
             const btnSimpanNamaToko = document.getElementById('btn-simpan-nama-toko');
             const formSettingLogo = document.getElementById('form-setting-logo');
             const settingLogoFileInput = document.getElementById('setting-logo-file');
             const btnSimpanLogo = document.getElementById('btn-simpan-logo');
-            // --- DOM BARU (KATEGORI) ---
+            // --- DOM (KATEGORI) ---
             const formTambahKategori = document.getElementById('form-tambah-kategori');
             const kategoriBaruNamaInput = document.getElementById('kategori-baru-nama');
             const btnTambahKategori = document.getElementById('btn-tambah-kategori');
             const daftarKategoriAdmin = document.getElementById('daftar-kategori-admin');
 
-
             // === ELEMEN DOM (HALAMAN RIWAYAT) ===
             const riwayatContainer = document.getElementById('riwayat-container');
             const riwayatEmptyMessage = document.getElementById('riwayat-empty-message');
+
+            // === ELEMEN DOM (SETUP MODAL BARU) ===
+            const setupModal = document.getElementById('setup-modal');
+            const setupForm = document.getElementById('setup-form');
+            const setupNamaTokoInput = document.getElementById('setup-nama-toko');
+            const setupLogoFileInput = document.getElementById('setup-logo-file');
 
 
             // === FUNGSI ===
@@ -390,7 +422,7 @@
             // Tampilkan Notifikasi Kustom
             let notifikasiTimeout;
             const showNotifikasi = (pesan, tipe = 'error') => {
-                clearTimeout(notifikasiTimeout); // Hapus timeout sebelumnya jika ada
+                clearTimeout(notifikasiTimeout); 
                 notifikasiEl.textContent = pesan;
                 notifikasiEl.classList.remove('hidden', 'bg-red-600', 'bg-green-600');
                 
@@ -414,34 +446,31 @@
                 }).format(angka);
             };
             
-            // --- FUNGSI BARU: Render Nama Toko ---
+            // Render Nama Toko (Dipanggil dari 2 tempat: setup & pengaturan)
             const renderNamaToko = () => {
                 namaTokoDisplay.textContent = namaToko;
-                settingNamaTokoInput.value = namaToko;
+                settingNamaTokoInput.value = namaToko; // Update juga di halaman pengaturan
             };
 
-            // --- FUNGSI BARU: Render Logo ---
+            // Render Logo (Dipanggil dari 2 tempat: setup & pengaturan)
             const renderLogo = () => {
                 if (logoUrl) {
-                    // Jika ada logo kustom, ganti SVG dengan <img>
                     logoContainer.innerHTML = `<img src="${logoUrl}" alt="Logo Toko" class="w-full h-full rounded-lg object-cover">`;
-                    // Sesuaikan style container agar pas
                     logoContainer.className = 'w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden';
                 } else {
-                    // Jika tidak ada (default), gunakan SVG asli
                     logoContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7V2h5l2 5-2 5-5-5Z"/><path d="m14 7 5 5-5 5V7Z"/><path d="M9 12 7 7l5 5-5 5Z"/><path d="m16 12 5 5-5-5-5 5Z"/></svg>`;
                     logoContainer.className = 'w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center';
                 }
             };
 
-            // --- FUNGSI BARU: Render Filter Kategori (di Halaman Kasir) ---
+            // Render Filter Kategori (di Halaman Kasir)
             const renderKategoriFilters = () => {
-                kategoriFilter.innerHTML = ''; // Kosongkan
+                kategoriFilter.innerHTML = ''; 
                 categories.forEach(kategori => {
                     const li = document.createElement('li');
                     const button = document.createElement('button');
                     button.dataset.kategori = kategori;
-                    button.textContent = kategori.charAt(0).toUpperCase() + kategori.slice(1); // "semua" -> "Semua"
+                    button.textContent = kategori.charAt(0).toUpperCase() + kategori.slice(1); 
                     button.className = 'kategori-btn px-4 py-2 rounded-full font-semibold transition-colors';
                     
                     if (kategori === filterKategori) {
@@ -454,11 +483,11 @@
                 });
             };
             
-            // --- FUNGSI BARU: Render Opsi Kategori (di Form Tambah Produk) ---
+            // Render Opsi Kategori (di Form Tambah Produk)
             const renderKategoriOptions = () => {
-                prodKategoriSelect.innerHTML = ''; // Kosongkan
+                prodKategoriSelect.innerHTML = ''; 
                 categories.forEach(kategori => {
-                    if (kategori === 'semua') return; // Lewati 'semua'
+                    if (kategori === 'semua') return; 
                     
                     const option = document.createElement('option');
                     option.value = kategori;
@@ -467,9 +496,9 @@
                 });
             };
             
-            // --- FUNGSI BARU: Render Daftar Kategori (di Halaman Admin) ---
+            // Render Daftar Kategori (di Halaman Admin)
             const renderDaftarKategoriAdmin = () => {
-                daftarKategoriAdmin.innerHTML = ''; // Kosongkan
+                daftarKategoriAdmin.innerHTML = ''; 
                 const adminCategories = categories.filter(k => k !== 'semua');
                 
                 if (adminCategories.length === 0) {
@@ -492,16 +521,12 @@
 
             // Pindah Halaman
             const pindahHalaman = (targetPageId) => {
-                // Sembunyikan semua halaman
                 pages.forEach(page => page.classList.add('hidden'));
-                
-                // Tampilkan halaman target
                 const targetPage = document.getElementById(targetPageId);
                 if (targetPage) {
                     targetPage.classList.remove('hidden');
                 }
                 
-                // Update style tombol navigasi
                 navButtons.forEach(btn => {
                     if (btn.dataset.page === targetPageId) {
                         btn.classList.add('bg-cyan-600', 'text-white');
@@ -512,25 +537,20 @@
                     }
                 });
                 
-                // Render konten halaman jika perlu
                 if (targetPageId === 'halaman-produk') {
-                    // Render daftar produk dan kategori di halaman admin
                     renderDaftarProdukAdmin();
                     renderDaftarKategoriAdmin();
                     renderKategoriOptions();
                 } else if (targetPageId === 'halaman-riwayat') {
                     renderRiwayat();
                 } else if (targetPageId === 'halaman-kasir') {
-                    // Pastikan kategori di kasir ter-update jika ada perubahan
                     renderKategoriFilters();
                 }
             };
 
             // Render Produk di Grid (Halaman Kasir)
-            // (Tidak ada perubahan signifikan, sudah filter by state)
             const renderProduk = () => {
-                productGrid.innerHTML = ''; // Kosongkan grid
-
+                productGrid.innerHTML = ''; 
                 const filteredProducts = allProducts.filter(produk => {
                     const matchKategori = (filterKategori === 'semua' || produk.kategori === filterKategori);
                     const matchSearch = (produk.nama.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -545,7 +565,6 @@
                 filteredProducts.forEach(produk => {
                     const productCard = document.createElement('div');
                     productCard.className = `bg-slate-800 rounded-lg shadow-lg overflow-hidden relative ${produk.stok > 0 ? 'cursor-pointer transform transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]' : 'opacity-50 cursor-not-allowed'}`;
-                    
                     productCard.innerHTML = `
                         <img src="${produk.gambar}" alt="${produk.nama}" class="w-full h-32 object-cover">
                         <div class="p-4">
@@ -559,17 +578,14 @@
                             </div>
                         ` : ''}
                     `;
-                    
                     if (produk.stok > 0) {
                         productCard.addEventListener('click', () => tambahKeKeranjang(produk.id));
                     }
-                    
                     productGrid.appendChild(productCard);
                 });
             };
 
-            // Tambah Produk ke Keranjang (dengan cek stok)
-            // (Tidak ada perubahan)
+            // Tambah Produk ke Keranjang
             const tambahKeKeranjang = (id) => {
                 const produk = allProducts.find(p => p.id === id);
                 if (produk.stok <= 0) {
@@ -590,12 +606,10 @@
                 } else {
                     keranjang.push({ ...produk, jumlah: 1 });
                 }
-                
                 renderKeranjang();
             };
 
-            // Ubah Jumlah Item di Keranjang (dengan cek stok)
-            // (Tidak ada perubahan)
+            // Ubah Jumlah Item di Keranjang
             const ubahJumlahItem = (id, delta) => {
                 const itemDiKeranjang = keranjang.find(item => item.id === id);
                 if (!itemDiKeranjang) return;
@@ -609,19 +623,15 @@
                 }
 
                 itemDiKeranjang.jumlah = jumlahBaru;
-
                 if (itemDiKeranjang.jumlah <= 0) {
                     keranjang = keranjang.filter(item => item.id !== id);
                 }
-                
                 renderKeranjang();
             };
 
             // Render Ulang Tampilan Keranjang
-            // (Tidak ada perubahan)
             const renderKeranjang = () => {
                 cartItemsContainer.innerHTML = '';
-
                 if (keranjang.length === 0) {
                     cartEmptyMessage.classList.remove('hidden');
                 } else {
@@ -644,10 +654,8 @@
                             </div>
                             <p class="text-sm font-semibold text-white w-1/4 text-right">${formatRupiah(item.harga * item.jumlah)}</p>
                         `;
-
                         cartItem.querySelector('.btn-kurang').addEventListener('click', () => ubahJumlahItem(item.id, -1));
                         cartItem.querySelector('.btn-tambah').addEventListener('click', () => ubahJumlahItem(item.id, 1));
-
                         cartItemsContainer.appendChild(cartItem);
                     });
                 }
@@ -655,22 +663,18 @@
             };
 
             // Update Total (Subtotal, Pajak, Total)
-            // (Tidak ada perubahan)
             const updateTotal = () => {
                 const subtotal = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0);
                 const pajak = subtotal * 0.10; // Pajak 10%
                 const total = subtotal + pajak;
-
                 subtotalEl.textContent = formatRupiah(subtotal);
                 pajakEl.textContent = formatRupiah(pajak);
                 totalEl.textContent = formatRupiah(total);
-                
                 btnBayar.disabled = (keranjang.length === 0);
                 hitungKembalian();
             };
 
             // Format Input 'Jumlah Bayar'
-            // (Tidak ada perubahan)
             const formatInputBayar = (e) => {
                 let value = e.target.value.replace(/[^0-9]/g, '');
                 e.target.value = value;
@@ -678,7 +682,6 @@
             };
             
             // Hitung Kembalian
-            // (Tidak ada perubahan)
             const hitungKembalian = () => {
                 const total = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0) * 1.10;
                 let jumlahBayar = parseFloat(jumlahBayarInput.value.replace(/[^0-9]/g, ''));
@@ -695,19 +698,21 @@
                     kembalianEl.classList.remove('text-red-500');
                     btnBayar.disabled = false;
                 }
-                
                 if (keranjang.length === 0) {
                     btnBayar.disabled = true;
                 }
             };
             
-            // Proses Pembayaran (Update Stok & Riwayat)
+            // Proses Pembayaran (MODIFIKASI: Menambah Nama Pelanggan)
             const prosesBayar = () => {
                 const subtotal = keranjang.reduce((acc, item) => acc + (item.harga * item.jumlah), 0);
                 const pajak = subtotal * 0.10;
                 const total = subtotal + pajak;
                 let jumlahBayar = parseFloat(jumlahBayarInput.value.replace(/[^0-9]/g, ''));
                 const kembalian = jumlahBayar - total;
+                
+                // --- BARU: Ambil nama pelanggan ---
+                const namaPelanggan = customerNameInput.value.trim();
 
                 // 1. Kurangi Stok
                 keranjang.forEach(itemKeranjang => {
@@ -721,7 +726,8 @@
                 const transaksi = {
                     id: `TRX-${new Date().getTime()}`,
                     tanggal: new Date(),
-                    items: JSON.parse(JSON.stringify(keranjang)), // Deep copy keranjang
+                    pelanggan: namaPelanggan || 'Walk-in', // Default 'Walk-in' jika kosong
+                    items: JSON.parse(JSON.stringify(keranjang)), 
                     subtotal: subtotal,
                     pajak: pajak,
                     total: total,
@@ -729,8 +735,6 @@
                     kembalian: kembalian
                 };
                 riwayatPenjualan.push(transaksi);
-                
-                // --- BARU: Simpan transaksi terakhir untuk dicetak ---
                 lastTransaction = transaksi;
 
                 // 3. Tampilkan modal sukses
@@ -740,15 +744,15 @@
                 successModal.querySelector('div').classList.add('scale-100');
             };
             
-            // Transaksi Baru (Reset)
+            // Transaksi Baru (MODIFIKASI: Reset Nama Pelanggan)
             const mulaiBaru = () => {
                 keranjang = [];
                 jumlahBayarInput.value = '';
+                customerNameInput.value = ''; // Reset nama pelanggan
                 renderKeranjang();
                 kembalianEl.textContent = "Rp 0";
                 kembalianEl.classList.add('text-cyan-400');
                 kembalianEl.classList.remove('text-red-500');
-                // --- BARU: Reset transaksi terakhir ---
                 lastTransaction = null;
             };
             
@@ -757,19 +761,16 @@
                 successModal.classList.add('hidden');
                 successModal.querySelector('div').classList.remove('scale-100');
                 mulaiBaru();
-                renderProduk(); // Render ulang grid produk untuk update stok
+                renderProduk(); 
             };
             
-            // --- FUNGSI BARU: Cetak Resi ---
+            // Cetak Resi (MODIFIKASI: Menambah Nama Pelanggan)
             const handleCetakResi = () => {
                 if (!lastTransaction) {
                     showNotifikasi("Data transaksi tidak ditemukan.");
                     return;
                 }
-                
                 const trx = lastTransaction;
-
-                // Buat HTML untuk resi
                 let itemsHtml = trx.items.map(item => `
                     <tr>
                         <td style="padding: 2px 0;">${item.nama}</td>
@@ -798,6 +799,7 @@
                     <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
                     <p>ID: ${trx.id}</p>
                     <p>Tgl: ${trx.tanggal.toLocaleString('id-ID')}</p>
+                    ${trx.pelanggan !== 'Walk-in' ? `<p>Pelanggan: ${trx.pelanggan}</p>` : ''}
                     <hr style="border: none; border-top: 1px dashed #000; margin: 5px 0;">
                     <table>
                         <thead>
@@ -837,17 +839,14 @@
                     <p style="text-align: center;">Terima kasih!</p>
                 `;
 
-                // Buka jendela baru dan cetak
                 const printWindow = window.open('', '', 'width=300,height=500');
                 printWindow.document.write(resiHtml);
                 printWindow.document.close();
                 printWindow.focus();
-                
-                // Tunggu gambar (jika ada) dimuat, lalu cetak
                 setTimeout(() => {
                     printWindow.print();
                     printWindow.close();
-                }, 250); // Beri waktu 250ms
+                }, 250); 
             };
 
             // Render Daftar Produk (Halaman Admin)
@@ -857,7 +856,6 @@
                     daftarProdukAdminContainer.innerHTML = `<p class="text-slate-500 text-center">Belum ada produk.</p>`;
                     return;
                 }
-                
                 allProducts.slice().reverse().forEach(produk => {
                     const item = document.createElement('div');
                     item.className = 'flex items-center justify-between bg-slate-700 p-3 rounded-lg';
@@ -883,13 +881,11 @@
             // Handle Submit Form Tambah Produk
             const handleTambahProduk = (e) => {
                 e.preventDefault();
-                
                 const nama = document.getElementById('prod-nama').value;
                 const kategori = document.getElementById('prod-kategori').value;
                 const harga = parseFloat(document.getElementById('prod-harga').value);
                 const stok = parseInt(document.getElementById('prod-stok').value);
                 
-                // Cek jika kategori valid (penting setelah dinamis)
                 if (!kategori) {
                     showNotifikasi("Kategori tidak valid. Tambahkan kategori terlebih dahulu.", "error");
                     return;
@@ -897,7 +893,6 @@
                 
                 const fileInput = document.getElementById('prod-gambar-file');
                 let gambar = ''; 
-                
                 if (fileInput.files && fileInput.files[0]) {
                     gambar = URL.createObjectURL(fileInput.files[0]);
                 } else {
@@ -905,27 +900,20 @@
                 }
                 
                 const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
-                
                 const newProduct = { id: newId, nama, kategori, harga, stok, gambar };
-                
                 allProducts.push(newProduct);
                 
-                renderProduk(); // Update grid di halaman kasir
-                renderDaftarProdukAdmin(); // Update list di halaman admin
-                
+                renderProduk(); 
+                renderDaftarProdukAdmin(); 
                 showNotifikasi("Produk berhasil ditambahkan!", "sukses");
                 formTambahProduk.reset();
-                // Reset file input
                 fileInput.value = '';
-                // Set ulang select ke opsi pertama
                 renderKategoriOptions();
             };
             
             // Handle Hapus Produk
             const hapusProduk = (id) => {
-                // Di aplikasi nyata, gunakan konfirmasi modal
                 const idToRemove = parseInt(id);
-                
                 allProducts = allProducts.filter(p => p.id !== idToRemove);
                 
                 const itemDiKeranjang = keranjang.find(item => item.id === idToRemove);
@@ -935,18 +923,15 @@
                 
                 renderDaftarProdukAdmin(); 
                 renderProduk(); 
-                
                 if (itemDiKeranjang) {
                     renderKeranjang();
                 }
-                
                 showNotifikasi("Produk berhasil dihapus.", "sukses");
             };
             
-            // Render Riwayat Penjualan
-            // (Tidak ada perubahan)
+            // Render Riwayat Penjualan (MODIFIKASI: Menampilkan Nama Pelanggan)
             const renderRiwayat = () => {
-                riwayatContainer.innerHTML = ''; // Kosongkan
+                riwayatContainer.innerHTML = ''; 
                 if (riwayatPenjualan.length === 0) {
                     riwayatContainer.appendChild(riwayatEmptyMessage);
                     return;
@@ -964,9 +949,12 @@
                     `).join('');
                     
                     trxCard.innerHTML = `
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-lg font-semibold text-cyan-400">${trx.id}</h3>
-                            <span class="text-sm text-slate-400">${trx.tanggal.toLocaleString('id-ID')}</span>
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-lg font-semibold text-cyan-400">${trx.id}</h3>
+                                <p class="text-sm text-white font-medium">${trx.pelanggan}</p> 
+                            </div>
+                            <span class="text-sm text-slate-400 text-right flex-shrink-0 ml-2">${trx.tanggal.toLocaleString('id-ID')}</span>
                         </div>
                         <ul class="space-y-1 border-b border-slate-700 pb-2 mb-2">
                             ${itemsHtml}
@@ -991,14 +979,11 @@
             });
 
             // Filter Kategori (Halaman Kasir)
-            // (Dimodifikasi untuk bekerja dengan tombol yang dinamis)
             kategoriFilter.addEventListener('click', (e) => {
                 const targetButton = e.target.closest('.kategori-btn');
                 if (targetButton) {
                     filterKategori = targetButton.dataset.kategori;
-                    // Render ulang tombol untuk update style
                     renderKategoriFilters();
-                    // Render ulang produk
                     renderProduk();
                 }
             });
@@ -1018,9 +1003,7 @@
             
             // Modal
             btnTutupModal.addEventListener('click', tutupModal);
-            // --- BARU: Event Listener Tombol Cetak Resi ---
             btnCetakResi.addEventListener('click', handleCetakResi);
-            
             successModal.addEventListener('click', (e) => {
                 if (e.target === successModal) {
                     tutupModal();
@@ -1039,14 +1022,14 @@
                 }
             });
             
-            // --- EVENT LISTENER BARU (PENGATURAN) ---
+            // --- EVENT LISTENER (PENGATURAN) ---
             
             // Simpan Nama Toko
             formSettingNama.addEventListener('submit', (e) => {
                 e.preventDefault();
                 namaToko = settingNamaTokoInput.value.trim();
                 if (namaToko === "") {
-                    namaToko = "Toko Sejahtera"; // Default jika kosong
+                    namaToko = "Toko Sejahtera"; 
                 }
                 renderNamaToko();
                 showNotifikasi("Nama toko berhasil diperbarui!", "sukses");
@@ -1057,7 +1040,6 @@
                 e.preventDefault();
                 const file = settingLogoFileInput.files[0];
                 if (file) {
-                    // Hapus URL lama jika ada untuk bebaskan memori
                     if (logoUrl) {
                         URL.revokeObjectURL(logoUrl);
                     }
@@ -1074,23 +1056,18 @@
             formTambahKategori.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const namaKat = kategoriBaruNamaInput.value.trim().toLowerCase();
-                
                 if (namaKat === "" || namaKat === "semua") {
                     showNotifikasi("Nama kategori tidak valid.", "error");
                     return;
                 }
-                
                 if (categories.includes(namaKat)) {
                     showNotifikasi("Kategori tersebut sudah ada.", "error");
                     return;
                 }
-                
                 categories.push(namaKat);
-                // Render ulang semua yang berhubungan dengan kategori
                 renderKategoriFilters();
                 renderKategoriOptions();
                 renderDaftarKategoriAdmin();
-                
                 showNotifikasi(`Kategori '${namaKat}' berhasil ditambahkan!`, "sukses");
                 kategoriBaruNamaInput.value = '';
             });
@@ -1100,37 +1077,61 @@
                 const target = e.target.closest('.btn-hapus-kategori');
                 if (target) {
                     const kategoriNama = target.dataset.kategori;
-                    
-                    // Cek apakah kategori ini masih dipakai
                     const produkTerkait = allProducts.some(p => p.kategori === kategoriNama);
                     if (produkTerkait) {
                         showNotifikasi("Tidak bisa menghapus: Kategori masih digunakan oleh produk.", "error");
                         return;
                     }
-                    
-                    // Hapus dari state
                     categories = categories.filter(c => c !== kategoriNama);
-                    
-                    // Render ulang
                     renderKategoriFilters();
                     renderKategoriOptions();
                     renderDaftarKategoriAdmin();
-                    renderProduk(); // Render ulang produk jika saja filternya aktif
-                    
+                    renderProduk(); 
                     showNotifikasi(`Kategori '${kategoriNama}' berhasil dihapus.`, "sukses");
                 }
             });
 
+            // --- BARU: Event Listener Setup Modal ---
+            setupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // 1. Set Nama Toko
+                namaToko = setupNamaTokoInput.value.trim();
+                if (namaToko === "") {
+                    namaToko = "Toko Sejahtera"; // Default
+                }
+                renderNamaToko(); // Update display
+                
+                // 2. Set Logo (jika ada)
+                const file = setupLogoFileInput.files[0];
+                if (file) {
+                    if (logoUrl) {
+                        URL.revokeObjectURL(logoUrl);
+                    }
+                    logoUrl = URL.createObjectURL(file);
+                    renderLogo(); // Update display
+                }
+                
+                // 3. Sembunyikan Modal
+                setupModal.classList.add('hidden');
+                
+                // 4. Inisialisasi sisa aplikasi (karena renderKategoriOptions 
+                //    bergantung pada renderNamaToko dll)
+                //    Kita panggil lagi render yang penting di sini
+                renderKategoriFilters();
+                renderKategoriOptions();
+                renderProduk();
+                renderDaftarProdukAdmin(); 
+            });
+
 
             // === INISIALISASI ===
-            // Panggil semua fungsi render saat aplikasi dimuat
-            renderNamaToko();
-            renderLogo();
-            renderKategoriFilters();
-            renderKategoriOptions();
-            renderProduk();
+            // HANYA panggil renderKeranjang() di awal.
+            // Render sisanya akan dipanggil SETELAH setup modal ditutup.
             renderKeranjang();
-            renderDaftarProdukAdmin(); // Siapkan konten halaman admin
+            
+            // Catatan: renderNamaToko(), renderLogo(), renderProduk(), dll
+            // sekarang dipanggil dari dalam event listener 'setupForm'
         });
     </script>
 
